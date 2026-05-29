@@ -8,14 +8,14 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "GenUi — Build Beautiful UIs Instantly",
-    template: "%s | GenUi",
+    default: "ZekoUi — Build Beautiful UIs Instantly",
+    template: "%s | ZekoUi",
   },
   description:
     "Generate stunning, production-ready UI components and pages in seconds using the power of AI. Describe your vision, watch it come to life.",
   keywords: ["AI", "UI Generator", "design", "components", "Next.js"],
   openGraph: {
-    title: "GenUi",
+    title: "ZekoUi",
     description: "Generate beautiful UI components instantly with AI.",
     type: "website",
   },

@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>🎨 GenUi</h1>
+  <h1>🎨 ZekoUi</h1>
   <p><strong>A Next-Generation Visual Responsive Website Builder powered by AI</strong></p>
 </div>
 
@@ -7,7 +7,7 @@
 
 ## 📖 Project Overview
 
-**GenUi** is a powerful, modern visual website builder designed to streamline the web development process. It combines the ease of a drag-and-drop interface with the intelligence of Google's GenAI, allowing developers and designers to instantly generate, customize, and export stunning responsive user interfaces. Whether you're building a landing page from scratch or scaffolding complex UI components, this tool bridges the gap between imagination and production-ready code.
+**ZekoUi** is a powerful, modern visual website builder designed to streamline the web development process. It combines the ease of a drag-and-drop interface with the intelligence of Google's GenAI, allowing developers and designers to instantly generate, customize, and export stunning responsive user interfaces. Whether you're building a landing page from scratch or scaffolding complex UI components, this tool bridges the gap between imagination and production-ready code.
 
 ## ✨ Key Features
 

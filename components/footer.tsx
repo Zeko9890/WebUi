@@ -53,7 +53,7 @@ export function Footer() {
               <span className="flex items-center justify-center size-7 rounded-lg gradient-brand group-hover:opacity-90 group-hover:scale-105 transition-all duration-200">
                 <Sparkles className="size-3.5 text-white" />
               </span>
-              <span className="font-bold text-sm gradient-brand-text">GenUi</span>
+              <span className="font-bold text-sm gradient-brand-text">ZekoUi</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-[200px] mb-5">
               Generate production-ready UI components instantly with AI.
@@ -117,7 +117,7 @@ export function Footer() {
 
         <div className="mt-12 pt-6 border-t border-border/60 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-muted-foreground">
-            © {year} GenUi. All rights reserved.
+            © {year} ZekoUi. All rights reserved.
           </p>
           <p className="text-xs text-muted-foreground">
             Built with Next.js &amp; shadcn/ui

@@ -62,7 +62,7 @@ export function Navbar() {
             </span>
             <div className="flex items-center gap-1.5">
               <span className="hidden sm:inline font-bold gradient-brand-text">
-                GenUi
+                ZekoUi
               </span>
               <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-brand/10 text-brand border border-brand/20 dark:bg-brand/20 dark:text-brand-foreground/90 scale-90">
                 BETA
