@@ -738,6 +738,188 @@ export const MOCK_DATA: MockDataMap = {
         statsValue: "100%"
       }
     ]
+  },
+  "startup": {
+    professional: [
+      {
+        brandName: "LaunchPad",
+        heroTitle: "Accelerate Your Venture",
+        heroHighlight: "Growth Now",
+        subtitle: "The ultimate scaling ecosystem for modern software startups to acquire customers and measure metrics.",
+        features: [
+          { icon: "🚀", title: "Rapid Scale", description: "Automated user acquisition loops built to scale." },
+          { icon: "📊", title: "Real-time Metrics", description: "Granular cohort retention and LTV calculations." },
+          { icon: "🛡️", title: "Enterprise Ready", description: "Fully compliant SOC2 and GDPR framework templates." }
+        ],
+        cta: "Launch Your App",
+        ctaSubtext: "Free 14-day growth trial.",
+        navLinks: ["Features", "Pricing", "Enterprise"],
+        badgeText: "Voted #1 Startup Product of 2026",
+        statsLabel: "Startups Scaled",
+        statsValue: "1,500+"
+      },
+      {
+        brandName: "SynergyFlow",
+        heroTitle: "Streamline Your Business",
+        heroHighlight: "Operations Today",
+        subtitle: "The unified operational platform designed to sync team workflows, document knowledge, and track OKRs.",
+        features: [
+          { icon: "⚙️", title: "Automated Workflows", description: "Connect tools and design custom logic in minutes." },
+          { icon: "📂", title: "Centralized Knowledge", description: "A single secure directory for all company policies." },
+          { icon: "🎯", title: "Goal Tracking", description: "Align teams dynamically around key objectives." }
+        ],
+        cta: "Request Enterprise Demo",
+        ctaSubtext: "Book a personalized team walkthrough.",
+        navLinks: ["Platform", "Solutions", "Pricing"],
+        badgeText: "Trusted by 500+ global enterprises",
+        statsLabel: "Time Saved",
+        statsValue: "20 hrs/wk"
+      }
+    ],
+    playful: [
+      {
+        brandName: "Yo! Startup",
+        heroTitle: "Build Creative Dreams",
+        heroHighlight: "In Minutes",
+        subtitle: "Get your ideas out into the wild instantly, without writing boring boilerplate configuration files.",
+        features: [
+          { icon: "🎈", title: "Fast Setup", description: "No complex setup. Just select your preset templates and run." },
+          { icon: "🍕", title: "Fuel Ideas", description: "Unlock badges, points, and digital prizes as you build." },
+          { icon: "✨", title: "Magic Content", description: "Instantly create brand logos and descriptions using AI." }
+        ],
+        cta: "Get Started Free",
+        ctaSubtext: "Start building immediately!",
+        navLinks: ["Why Us", "Games", "Pricing"],
+        badgeText: "Now with 100% more pixels!",
+        statsLabel: "Happy Creators",
+        statsValue: "85,000"
+      },
+      {
+        brandName: "Zappy.io",
+        heroTitle: "Make Group Projects",
+        heroHighlight: "Super Fun",
+        subtitle: "A super cute, interactive productivity whiteboard where your team can sketch ideas and play game-like challenges.",
+        features: [
+          { icon: "🎨", title: "Interactive Canvas", description: "Draw, stick notes, and use goofy emojis with your team." },
+          { icon: "👾", title: "Gamified Sprints", description: "Earn badges and level up as you complete your tickets." },
+          { icon: "💬", title: "Cute Avatars", description: "Talk in voice rooms using cute pixel avatars." }
+        ],
+        cta: "Create Free Board",
+        ctaSubtext: "No signup required to start sketching.",
+        navLinks: ["Playground", "Templates", "Pricing"],
+        badgeText: "Loved by creative teams worldwide 🦄",
+        statsLabel: "Boards Created",
+        statsValue: "250,000+"
+      }
+    ],
+    luxurious: [
+      {
+        brandName: "Aether Venture",
+        heroTitle: "Bespoke Incubation For",
+        heroHighlight: "Elite Founders",
+        subtitle: "A premium private sanctuary providing capital, elite design execution, and world-class distribution.",
+        features: [
+          { icon: "⚜️", title: "Bespoke Advisory", description: "Private guidance from serial founders with $10B+ exits." },
+          { icon: "💎", title: "Exclusive Funding", description: "Access premium syndicate capital circles in silence." },
+          { icon: "🏛️", title: "Elite Network", description: "Strictly limited member seats for maximum prestige." }
+        ],
+        cta: "Request Invitation",
+        ctaSubtext: "Strict NDAs required for onboarding.",
+        navLinks: ["Aesthetic", "Capital", "Advisors"],
+        badgeText: "Managing Over $5B in Private Syndicate Capital",
+        statsLabel: "Success Rate",
+        statsValue: "100%"
+      },
+      {
+        brandName: "Verdant Capital",
+        heroTitle: "Elevate Modern Founders",
+        heroHighlight: "To New Heights",
+        subtitle: "Exclusive capital placement, bespoke financial design, and high-prestige syndication for visionary founders.",
+        features: [
+          { icon: "📈", title: "Bespoke Placements", description: "Custom financing structures tailored for high-growth firms." },
+          { icon: "🔐", title: "Discreet Syndication", description: "Private capital matching with ultra-exclusive family offices." },
+          { icon: "⚜️", title: "Founders Concierge", description: "Dedicated strategic partners for tax, legal, and operational prep." }
+        ],
+        cta: "Request Private Briefing",
+        ctaSubtext: "Subject to verification of founding credentials.",
+        navLinks: ["Heritage", "Capital Solutions", "Contact"],
+        badgeText: "Exclusive Syndicate For Exceptional Visionaries",
+        statsLabel: "Syndicate Net Worth",
+        statsValue: "$12B+"
+      }
+    ],
+    energetic: [
+      {
+        brandName: "HyperLaunch",
+        heroTitle: "Scale Your Growth At",
+        heroHighlight: "Warp Speed",
+        subtitle: "High-octane marketing engines and customer acquisition funnels to out-pace your competition.",
+        features: [
+          { icon: "🔥", title: "Warp Speed Loops", description: "Push features and launch campaigns in under 60 seconds." },
+          { icon: "⚡", title: "Hyper Analytics", description: "Real-time user engagement tracking with absolute zero lag." },
+          { icon: "💥", title: "Growth Hacks", description: "Unlock proprietary organic marketing funnels instantly." }
+        ],
+        cta: "Go Hyper Now",
+        ctaSubtext: "Limited free growth assessments.",
+        navLinks: ["Campaigns", "Speed", "Pricing"],
+        badgeText: "Caution: Built for high-growth tech",
+        statsLabel: "Average CTR Boost",
+        statsValue: "240%"
+      },
+      {
+        brandName: "Vortex.io",
+        heroTitle: "Unleash Massive Startup",
+        heroHighlight: "Velocity Now",
+        subtitle: "High-octane growth engines, fast deployment pipelines, and instant customer feedback systems built for action.",
+        features: [
+          { icon: "⚡", title: "Sub-Second Deployments", description: "Ship your code to production in less than a second." },
+          { icon: "💥", title: "High-Impact Analytics", description: "Real-time user heatmaps and action tracking on the fly." },
+          { icon: "🔥", title: "Blitzscaling Playbook", description: "Access battle-tested growth scripts to acquire initial users." }
+        ],
+        cta: "Start Blitzscaling",
+        ctaSubtext: "Get instantly onboarded in 20 seconds.",
+        navLinks: ["Velocity", "Stack", "Pricing"],
+        badgeText: "Built strictly for fast-moving startups",
+        statsLabel: "Speed Increase",
+        statsValue: "10x Faster"
+      }
+    ],
+    trustworthy: [
+      {
+        brandName: "SafeScale",
+        heroTitle: "Secure Corporate Growth &",
+        heroHighlight: "Stability",
+        subtitle: "Compliant capital injection and corporate scaling blueprints for risk-averse, safety-first companies.",
+        features: [
+          { icon: "🔒", title: "Shield Security", description: "Top-tier database encryption and privacy by default." },
+          { icon: "⚖️", title: "Legal Compliance", description: "Automated regulatory reporting for SEC, GDPR and HIPAA." },
+          { icon: "🤝", title: "Guaranteed Stability", description: "Backed by 24/7 technical operations and auditing squads." }
+        ],
+        cta: "Consult SafeScale",
+        ctaSubtext: "Includes detailed compliance audits.",
+        navLinks: ["Compliance", "Audit", "Safety"],
+        badgeText: "Backed by the National Security Council",
+        statsLabel: "Audit Rating",
+        statsValue: "AAA"
+      },
+      {
+        brandName: "Vanguard Guard",
+        heroTitle: "Secure Your Enterprise",
+        heroHighlight: "Digital Assets",
+        subtitle: "Military-grade data compliance, automated security patching, and strict isolation for modern startup stacks.",
+        features: [
+          { icon: "🛡️", title: "Zero Trust Network", description: "Complete separation of concerns and end-to-end encryption." },
+          { icon: "🔍", title: "Continuous Audits", description: "Real-time vulnerability scanning and immediate report builds." },
+          { icon: "📋", title: "Auto Compliance", description: "Instant generation of SOC2, ISO27001, and HIPAA compliance packs." }
+        ],
+        cta: "Schedule Audit Consultation",
+        ctaSubtext: "Backed by 24/7 Incident Response team.",
+        navLinks: ["Security", "Compliance", "Advisories"],
+        badgeText: "Authorized Federal Compliance Scaffolding",
+        statsLabel: "Secured Systems",
+        statsValue: "4,500+"
+      }
+    ]
   }
 };
 

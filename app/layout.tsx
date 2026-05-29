@@ -8,14 +8,14 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "AI UI Generator — Build Beautiful UIs Instantly",
-    template: "%s | AI UI Generator",
+    default: "GenUi — Build Beautiful UIs Instantly",
+    template: "%s | GenUi",
   },
   description:
     "Generate stunning, production-ready UI components and pages in seconds using the power of AI. Describe your vision, watch it come to life.",
   keywords: ["AI", "UI Generator", "design", "components", "Next.js"],
   openGraph: {
-    title: "AI UI Generator",
+    title: "GenUi",
     description: "Generate beautiful UI components instantly with AI.",
     type: "website",
   },
@@ -37,7 +37,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange={false}
         >
-          <TooltipProvider delayDuration={200}>
+          <TooltipProvider>
             {children}
           </TooltipProvider>
           <Toaster position="bottom-right" theme="system" toastOptions={{ className: "dark:bg-zinc-950 dark:border-zinc-800" }} />

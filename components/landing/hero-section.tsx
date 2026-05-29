@@ -1,148 +1,161 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRight, Sparkles, Zap, Code2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-
-const FLOATING_BADGES = [
-  { icon: "🎨", text: "Dark Mode Ready", delay: "0s", x: "-8%", y: "20%" },
-  { icon: "⚡", text: "< 2s Generation", delay: "0.6s", x: "88%", y: "15%" },
-  { icon: "📱", text: "Responsive", delay: "1.2s", x: "82%", y: "72%" },
-  { icon: "🧩", text: "30+ Components", delay: "1.8s", x: "-4%", y: "70%" },
-];
+import Link from "next/link";
+import { ArrowRight, Sparkles, LayoutTemplate, MousePointer2 } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section
-      id="hero"
-      className="relative min-h-[calc(100vh-64px)] flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-24 pb-20 overflow-hidden"
-    >
-      {/* Background layers */}
-      <div className="absolute inset-0 dot-grid opacity-60" />
-      <div className="absolute inset-0 gradient-radial-glow" />
-
-      {/* Ambient blobs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[600px] rounded-full bg-primary/8 blur-[120px] pointer-events-none animate-glow-pulse" />
-      <div className="absolute bottom-10 right-1/4 size-[300px] rounded-full bg-violet-500/6 blur-[80px] pointer-events-none animate-glow-pulse" style={{ animationDelay: "2s" }} />
-
-      {/* Floating badges — hidden on small screens */}
-      <div className="hidden lg:block">
-        {FLOATING_BADGES.map((badge) => (
-          <div
-            key={badge.text}
-            className="absolute animate-float"
-            style={{
-              left: badge.x,
-              top: badge.y,
-              animationDelay: badge.delay,
-              animationDuration: "4s",
-            }}
+    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+      {/* Background Gradients */}
+      <div className="absolute inset-0 bg-black -z-20" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_center,rgba(59,130,246,0.15),transparent_50%)] -z-10" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent opacity-50" />
+      
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div className="text-center max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/70 mb-8 backdrop-blur-md"
           >
-            <div className="glass rounded-xl px-3 py-2 flex items-center gap-2 text-xs font-medium shadow-lg border whitespace-nowrap">
-              <span>{badge.icon}</span>
-              <span className="text-foreground/80">{badge.text}</span>
-            </div>
-          </div>
-        ))}
-      </div>
+            <Sparkles className="size-3 text-blue-400" />
+            <span>The next generation of website building</span>
+          </motion.div>
 
-      {/* Content */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-6"
-      >
-        {/* Eyebrow badge */}
-        <Badge
-          id="hero-eyebrow"
-          variant="secondary"
-          className="gap-1.5 px-3 py-1 text-xs font-semibold tracking-wide border-primary/20 bg-primary/8 text-primary"
-        >
-          <Sparkles className="size-3" />
-          Powered by AI · Generate in seconds
-        </Badge>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+            className="text-5xl md:text-7xl font-black tracking-tighter text-white mb-6 leading-[1.1]"
+          >
+            Build stunning websites,{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">
+              visually.
+            </span>
+          </motion.h1>
 
-        {/* Headline */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08]">
-          <span className="text-foreground">Build stunning</span>
-          <br />
-          <span className="gradient-brand-text">UI components</span>
-          <br />
-          <span className="text-foreground">instantly with AI</span>
-        </h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+            className="text-lg md:text-xl text-white/60 mb-10 max-w-2xl mx-auto font-medium"
+          >
+            Stop wrestling with code and templates. Design premium, responsive landing pages in real-time with our intuitive visual builder.
+          </motion.p>
 
-        {/* Sub-headline */}
-        <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-          Describe your vision in plain English. Get production-ready components
-          built with modern design principles — dark mode, responsive, and
-          export-ready.
-        </p>
-
-        {/* CTA buttons */}
-        <div className="flex flex-col sm:flex-row items-center gap-3 mt-2">
-          <Link href="/generator" id="hero-cta-primary">
-            <Button
-              size="lg"
-              className="gradient-brand text-white border-0 font-semibold px-7 h-12 glow-primary hover:opacity-90 transition-opacity gap-2"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <Link
+              href="/generator"
+              className="flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black font-bold hover:scale-105 active:scale-95 transition-all shadow-[0_0_30px_-5px_rgba(255,255,255,0.3)]"
             >
-              Start Generating Free
+              Start Building Free
               <ArrowRight className="size-4" />
-            </Button>
-          </Link>
-          <Link href="/#features" id="hero-cta-secondary">
-            <Button
-              size="lg"
-              variant="outline"
-              className="h-12 px-7 font-semibold gap-2 hover:bg-accent"
+            </Link>
+            <a
+              href="#how-it-works"
+              className="flex items-center gap-2 px-8 py-4 rounded-full bg-white/5 text-white font-semibold hover:bg-white/10 border border-white/10 transition-colors"
             >
-              <Zap className="size-4" />
-              See Features
-            </Button>
-          </Link>
+              See how it works
+            </a>
+          </motion.div>
         </div>
 
-        {/* Social proof */}
-        <p className="text-sm text-muted-foreground mt-1">
-          No credit card required · Free tier available · Export to React &amp; HTML
-        </p>
+        {/* Animated Builder Mockup */}
+        <motion.div
+          initial={{ opacity: 0, y: 40, rotateX: 10 }}
+          animate={{ opacity: 1, y: 0, rotateX: 0 }}
+          transition={{ duration: 0.8, delay: 0.5, type: "spring", bounce: 0.2 }}
+          style={{ perspective: 1000 }}
+          className="mt-20 md:mt-32 relative mx-auto max-w-5xl"
+        >
+          {/* Glow behind mockup */}
+          <div className="absolute inset-0 bg-blue-500/20 blur-[100px] rounded-full -z-10" />
 
-        {/* Code preview strip */}
-        <div className="w-full max-w-2xl mt-6 glass rounded-2xl border overflow-hidden shadow-2xl text-left">
-          <div className="flex items-center gap-2 px-4 py-3 border-b bg-muted/30">
-            <span className="size-3 rounded-full bg-rose-500/70" />
-            <span className="size-3 rounded-full bg-amber-500/70" />
-            <span className="size-3 rounded-full bg-emerald-500/70" />
-            <div className="flex items-center gap-1.5 ml-2 text-xs text-muted-foreground">
-              <Code2 className="size-3" />
-              preview.tsx
+          <div className="rounded-2xl border border-white/10 bg-[#0a0a0a] shadow-2xl overflow-hidden flex flex-col h-[500px] relative ring-1 ring-white/5">
+            {/* Mock Window Chrome */}
+            <div className="h-12 border-b border-white/10 bg-white/5 flex items-center px-4 gap-2">
+              <div className="flex gap-1.5">
+                <div className="size-3 rounded-full bg-white/20" />
+                <div className="size-3 rounded-full bg-white/20" />
+                <div className="size-3 rounded-full bg-white/20" />
+              </div>
+              <div className="mx-auto px-4 py-1.5 rounded-md bg-black/50 border border-white/5 text-[10px] font-mono text-white/40">
+                app.antigravity.dev/builder
+              </div>
+            </div>
+
+            {/* Mock Builder Interface */}
+            <div className="flex-1 flex overflow-hidden">
+              {/* Mock Sidebar */}
+              <div className="w-64 border-r border-white/10 bg-[#0f0f0f] p-4 flex flex-col gap-4 hidden sm:flex">
+                <div className="h-4 w-20 bg-white/10 rounded" />
+                <div className="space-y-2">
+                  <div className="h-8 w-full bg-white/5 rounded-md border border-white/10 flex items-center px-3 gap-2">
+                    <LayoutTemplate className="size-3 text-white/40" />
+                    <div className="h-2 w-16 bg-white/20 rounded" />
+                  </div>
+                  <div className="h-8 w-full bg-white/5 rounded-md border border-white/10" />
+                  <div className="h-8 w-full bg-blue-500/20 rounded-md border border-blue-500/50 flex items-center px-3" />
+                </div>
+              </div>
+
+              {/* Mock Canvas Area */}
+              <div className="flex-1 bg-[url('/grid.svg')] bg-center relative p-8 flex items-center justify-center overflow-hidden">
+                <motion.div 
+                  className="w-full max-w-md bg-white rounded-xl shadow-2xl overflow-hidden"
+                  animate={{ 
+                    scale: [0.95, 1, 0.95],
+                    rotate: [0, 1, -1, 0]
+                  }}
+                  transition={{ 
+                    duration: 10, 
+                    repeat: Infinity, 
+                    repeatType: "reverse",
+                    ease: "easeInOut"
+                  }}
+                >
+                  <div className="h-12 border-b border-black/5 flex items-center justify-between px-6">
+                    <div className="size-6 bg-black rounded-md" />
+                    <div className="flex gap-4">
+                      <div className="h-2 w-8 bg-black/10 rounded" />
+                      <div className="h-2 w-8 bg-black/10 rounded" />
+                    </div>
+                  </div>
+                  <div className="p-10 flex flex-col items-center text-center gap-4">
+                    <div className="h-8 w-3/4 bg-black/90 rounded-md" />
+                    <div className="h-3 w-full bg-black/20 rounded-md" />
+                    <div className="h-3 w-5/6 bg-black/20 rounded-md" />
+                    <div className="h-10 w-32 bg-blue-600 rounded-full mt-4" />
+                  </div>
+                </motion.div>
+                
+                {/* Floating Mouse Cursor Mock */}
+                <motion.div
+                  className="absolute z-50 text-white drop-shadow-lg"
+                  animate={{
+                    x: [100, -50, 20, 100],
+                    y: [100, 50, -20, 100],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <MousePointer2 className="size-6 text-white fill-black" />
+                </motion.div>
+              </div>
             </div>
           </div>
-          <div className="px-5 py-4 font-mono text-xs sm:text-sm leading-relaxed text-muted-foreground overflow-x-auto">
-            <span className="text-violet-400">const</span>{" "}
-            <span className="text-blue-400">HeroSection</span>{" "}
-            <span className="text-foreground/70">= () =&gt; (</span>
-            <br />
-            <span className="pl-4 text-foreground/70">&lt;</span>
-            <span className="text-emerald-400">section</span>
-            <span className="text-amber-400"> className</span>
-            <span className="text-foreground/70">=</span>
-            <span className="text-rose-400">&quot;hero-gradient&quot;</span>
-            <span className="text-foreground/70">&gt;</span>
-            <br />
-            <span className="pl-8 text-foreground/70">&lt;</span>
-            <span className="text-emerald-400">h1</span>
-            <span className="text-foreground/70">&gt;</span>
-            <span className="text-foreground">Build faster with AI</span>
-            <span className="text-foreground/70">&lt;/</span>
-            <span className="text-emerald-400">h1</span>
-            <span className="text-foreground/70">&gt;</span>
-            <span className="animate-blink text-violet-400 ml-0.5">|</span>
-          </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }

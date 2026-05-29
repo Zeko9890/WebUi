@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -40,36 +40,72 @@ const FOOTER_LINKS = {
 };
 
 export function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="border-t bg-background/80">
+    <footer className="relative border-t bg-background border-gradient-top">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 lg:py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+
+          {/* Brand col */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <span className="flex items-center justify-center size-8 rounded-lg gradient-brand shadow-sm">
-                <Sparkles className="size-4 text-white" />
+            <Link href="/" className="inline-flex items-center gap-2.5 mb-3 group">
+              <span className="flex items-center justify-center size-7 rounded-lg gradient-brand group-hover:opacity-90 group-hover:scale-105 transition-all duration-200">
+                <Sparkles className="size-3.5 text-white" />
               </span>
-              <span className="font-bold text-sm gradient-brand-text">AI UI Generator</span>
+              <span className="font-bold text-sm gradient-brand-text">GenUi</span>
             </Link>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-[200px]">
-              Generate beautiful UI components instantly with the power of AI.
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-[200px] mb-5">
+              Generate production-ready UI components instantly with AI.
             </p>
-            <div className="flex items-center gap-3 mt-5">
-              <Link id="footer-github" href="#" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="GitHub">
-                <GithubIcon className="size-5" />
-              </Link>
-              <Link id="footer-twitter" href="#" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="X / Twitter">
-                <XIcon className="size-5" />
-              </Link>
+            <div className="flex items-center gap-2">
+              <Tooltip>
+                <TooltipTrigger>
+                  <a
+                    id="footer-github"
+                    href="https://github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    className="flex items-center justify-center size-8 rounded-full border border-border/40 text-muted-foreground hover:text-foreground hover:border-border hover:bg-accent/60 hover:scale-105 active:scale-95 transition-all"
+                  >
+                    <GithubIcon className="size-3.5" />
+                  </a>
+                </TooltipTrigger>
+                <TooltipContent side="top">GitHub</TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger>
+                  <a
+                    id="footer-twitter"
+                    href="https://x.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="X / Twitter"
+                    className="flex items-center justify-center size-8 rounded-full border border-border/40 text-muted-foreground hover:text-foreground hover:border-border hover:bg-accent/60 hover:scale-105 active:scale-95 transition-all"
+                  >
+                    <XIcon className="size-3.5" />
+                  </a>
+                </TooltipTrigger>
+                <TooltipContent side="top">Twitter / X</TooltipContent>
+              </Tooltip>
             </div>
           </div>
+
+          {/* Link columns */}
           {Object.entries(FOOTER_LINKS).map(([group, links]) => (
             <div key={group}>
-              <h3 className="text-sm font-semibold mb-3 text-foreground">{group}</h3>
-              <ul className="space-y-2.5">
+              <h3 className="text-xs font-bold text-foreground uppercase tracking-widest mb-4">
+                {group}
+              </h3>
+              <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    <Link
+                      href={link.href}
+                      className="text-sm text-muted-foreground hover:text-foreground hover:translate-x-0.5 inline-block transition-all duration-150"
+                    >
                       {link.label}
                     </Link>
                   </li>
@@ -78,10 +114,14 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <Separator className="my-8" />
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-muted-foreground">
-          <p>© 2026 AI UI Generator. All rights reserved.</p>
-          <p className="flex items-center gap-1">Built with <span className="text-rose-500">♥</span> using Next.js &amp; shadcn/ui</p>
+
+        <div className="mt-12 pt-6 border-t border-border/60 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-muted-foreground">
+            © {year} GenUi. All rights reserved.
+          </p>
+          <p className="text-xs text-muted-foreground">
+            Built with Next.js &amp; shadcn/ui
+          </p>
         </div>
       </div>
     </footer>

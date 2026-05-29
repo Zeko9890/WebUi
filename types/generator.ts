@@ -3,14 +3,15 @@ export type ProjectType =
   | "ai-saas"
   | "restaurant"
   | "clothing"
-  | "portfolio";
+  | "portfolio"
+  | "startup";
 
 export type ThemeStyle =
-  | "modern"
   | "minimal"
-  | "bold"
-  | "retro"
-  | "vibrant";
+  | "cyberpunk"
+  | "luxury"
+  | "startup"
+  | "dark-modern";
 
 export type BrandVibe =
   | "professional"

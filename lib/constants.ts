@@ -1,8 +1,4 @@
 import type {
-  ColorScheme,
-  ComponentType,
-  StylePreset,
-  AnimationLevel,
   Feature,
   NavLink,
 } from "@/types";
@@ -17,35 +13,35 @@ export const NAV_LINKS: NavLink[] = [
 export const FEATURES: Feature[] = [
   {
     icon: "⚡",
-    title: "Instant Generation",
+    title: "Instant UI Generation",
     description:
-      "Describe your UI in plain English and watch it materialize in under a second. No prompting expertise required.",
+      "Describe what you want, select a theme, and get a completely functional, clean, modern UI in seconds.",
     badge: "Fast",
   },
   {
     icon: "🎨",
-    title: "Beautiful by Default",
+    title: "AI-Powered Themes",
     description:
-      "Every output follows modern design principles — spacing, typography, color theory — baked in automatically.",
-  },
-  {
-    icon: "🧩",
-    title: "Component Library",
-    description:
-      "Generate buttons, cards, forms, navbars, dashboards, and more. Mix and match to build entire pages.",
-    badge: "30+ Types",
-  },
-  {
-    icon: "🌙",
-    title: "Dark Mode Ready",
-    description:
-      "Every component ships with a polished dark and light mode. Zero extra configuration needed.",
+      "Switch between custom presets like Cyberpunk, Luxury, and Minimal. Typography, border radii, colors, and shadows adjust dynamically.",
+    badge: "Hot",
   },
   {
     icon: "📱",
-    title: "Responsive Layouts",
+    title: "Fully Responsive",
     description:
-      "Mobile-first, fully responsive output by default. Looks perfect on any screen from 320px to 4K.",
+      "Every generated section is built with responsive mobile-first grids and flexboxes, optimized for every viewport.",
+  },
+  {
+    icon: "🔧",
+    title: "Interactive Customization",
+    description:
+      "Edit content inline, regenerate specific blocks, adjust themes, and fine-tune live in the side-by-side preview.",
+  },
+  {
+    icon: "✨",
+    title: "Premium Design Tokens",
+    description:
+      "Crafted with modern CSS variables, glassmorphism, subtle animation curves, and professional accessibility details.",
   },
   {
     icon: "💾",
@@ -55,50 +51,3 @@ export const FEATURES: Feature[] = [
     badge: "New",
   },
 ];
-
-export const COMPONENT_TYPES: { value: ComponentType; label: string }[] = [
-  { value: "hero", label: "Hero Section" },
-  { value: "navbar", label: "Navigation Bar" },
-  { value: "card", label: "Card Component" },
-  { value: "button", label: "Button Group" },
-  { value: "form", label: "Form" },
-  { value: "pricing", label: "Pricing Table" },
-  { value: "testimonial", label: "Testimonials" },
-  { value: "dashboard", label: "Dashboard" },
-  { value: "landing", label: "Full Landing Page" },
-];
-
-export const COLOR_SCHEMES: { value: ColorScheme; label: string; class: string }[] = [
-  { value: "violet", label: "Violet", class: "bg-violet-500" },
-  { value: "blue", label: "Blue", class: "bg-blue-500" },
-  { value: "emerald", label: "Emerald", class: "bg-emerald-500" },
-  { value: "rose", label: "Rose", class: "bg-rose-500" },
-  { value: "amber", label: "Amber", class: "bg-amber-500" },
-  { value: "slate", label: "Slate", class: "bg-slate-500" },
-];
-
-export const STYLE_PRESETS: { value: StylePreset; label: string; description: string }[] = [
-  { value: "minimal", label: "Minimal", description: "Clean, lots of whitespace" },
-  { value: "glassmorphism", label: "Glass", description: "Frosted glass effects" },
-  { value: "brutalist", label: "Brutalist", description: "Bold borders, raw aesthetics" },
-  { value: "soft", label: "Soft UI", description: "Rounded, neumorphic feel" },
-];
-
-export const ANIMATION_LEVELS: { value: AnimationLevel; label: string }[] = [
-  { value: "none", label: "None" },
-  { value: "subtle", label: "Subtle" },
-  { value: "moderate", label: "Moderate" },
-  { value: "energetic", label: "Energetic" },
-];
-
-export const DEFAULT_CONFIG = {
-  prompt: "",
-  componentType: "hero" as ComponentType,
-  colorScheme: "violet" as ColorScheme,
-  stylePreset: "minimal" as StylePreset,
-  animationLevel: "subtle" as AnimationLevel,
-  darkMode: true,
-  responsive: true,
-  includeIcons: true,
-  borderRadius: 8,
-};

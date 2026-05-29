@@ -1,101 +1,75 @@
-import { Badge } from "@/components/ui/badge";
-import { FEATURES } from "@/lib/constants";
-import { cn } from "@/lib/utils";
+"use client";
+
 import { motion } from "framer-motion";
+import { MousePointerClick, Zap, Paintbrush, MonitorSmartphone, Layers, Code2 } from "lucide-react";
+
+const FEATURES = [
+  {
+    icon: <Paintbrush className="size-5" />,
+    title: "Visual Editing",
+    description: "Click any text to edit inline. Swap themes and layouts instantly with the sidebar controls."
+  },
+  {
+    icon: <MonitorSmartphone className="size-5" />,
+    title: "True Responsiveness",
+    description: "Preview how your site looks on desktop, tablet, and mobile instantly. No guessing required."
+  },
+  {
+    icon: <Layers className="size-5" />,
+    title: "Premium Layouts",
+    description: "Built-in layout systems designed by experts. Choose from Startup, Luxury, Minimal, and more."
+  },
+  {
+    icon: <Code2 className="size-5" />,
+    title: "Production Ready Code",
+    description: "Export clean, highly optimized Next.js + Tailwind code with a single click."
+  },
+  {
+    icon: <Zap className="size-5" />,
+    title: "Lightning Fast",
+    description: "The builder runs entirely in your browser with zero latency. No loading spinners."
+  },
+  {
+    icon: <MousePointerClick className="size-5" />,
+    title: "Micro-interactions",
+    description: "Subtle hover states, spring animations, and glassmorphism built right into the presets."
+  }
+];
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="relative py-24 px-4 sm:px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16 max-w-2xl mx-auto"
-        >
-          <Badge variant="secondary" className="mb-4 border-primary/20 bg-primary/8 text-primary text-xs font-semibold px-3 py-1">
-            Everything you need
-          </Badge>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-            Generate, customize,{" "}
-            <span className="gradient-brand-text">ship faster</span>
+    <section className="py-24 md:py-32 bg-black relative border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-6">
+            Engineered for excellence
           </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            From a single button to an entire landing page — our AI handles the
-            design work so you can focus on building.
+          <p className="text-white/60 text-lg font-medium leading-relaxed">
+            We combined the power of modern frameworks with the ease of visual editing. The result is a tool that feels like magic.
           </p>
-        </motion.div>
-
-        {/* Feature grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {FEATURES.map((feature, i) => (
-            <FeatureCard key={feature.title} feature={feature} index={i} />
-          ))}
         </div>
 
-        {/* Bottom stats row */}
-        <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 border-t pt-12">
-          {[
-            { value: "30+", label: "Component types" },
-            { value: "< 2s", label: "Generation time" },
-            { value: "6", label: "Color schemes" },
-            { value: "100%", label: "Responsive output" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-3xl font-extrabold gradient-brand-text mb-1">
-                {stat.value}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {FEATURES.map((feat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/[0.07] transition-colors group"
+            >
+              <div className="size-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 transition-transform">
+                {feat.icon}
               </div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
-            </div>
+              <h3 className="text-xl font-bold text-white mb-3">{feat.title}</h3>
+              <p className="text-white/50 leading-relaxed text-sm">
+                {feat.description}
+              </p>
+            </motion.div>
           ))}
         </div>
       </div>
     </section>
-  );
-}
-
-function FeatureCard({
-  feature,
-  index,
-}: {
-  feature: (typeof FEATURES)[number];
-  index: number;
-}) {
-  const isLarge = index === 0;
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={cn(
-        "group relative rounded-2xl border bg-card p-6 flex flex-col gap-4",
-        "hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 cursor-default",
-        isLarge && "sm:col-span-2 lg:col-span-1"
-      )}
-    >
-      {/* Subtle gradient overlay on hover */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/4 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-      <div className="flex items-start justify-between gap-3 relative">
-        <div className="text-3xl leading-none">{feature.icon}</div>
-        {feature.badge && (
-          <Badge className="gradient-brand text-white border-0 text-[10px] font-bold px-2 py-0.5 shrink-0">
-            {feature.badge}
-          </Badge>
-        )}
-      </div>
-
-      <div className="relative">
-        <h3 className="font-semibold text-base mb-1.5 group-hover:text-primary transition-colors">
-          {feature.title}
-        </h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          {feature.description}
-        </p>
-      </div>
-    </motion.div>
   );
 }

@@ -4,12 +4,21 @@ import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 
 // ─── Upstash Redis Rate Limiter ──────────────────────────────────────────────
-// Limits to 5 requests per day per IP
-const redis = Redis.fromEnv();
-const ratelimit = new Ratelimit({
-  redis: redis,
-  limiter: Ratelimit.slidingWindow(5, "1 d"),
-});
+// Lazily initialized — only created when UPSTASH env vars are present.
+// This prevents the route from crashing on import if Redis isn't configured.
+let ratelimit: Ratelimit | null = null;
+
+function getRatelimit(): Ratelimit | null {
+  if (ratelimit) return ratelimit;
+  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+    return null;
+  }
+  ratelimit = new Ratelimit({
+    redis: Redis.fromEnv(),
+    limiter: Ratelimit.slidingWindow(5, "1 d"),
+  });
+  return ratelimit;
+}
 
 // ─── Request Timeout Helper ──────────────────────────────────────────────────
 const REQUEST_TIMEOUT_MS = 15_000; // 15 seconds max
@@ -51,12 +60,15 @@ export async function POST(request: NextRequest) {
       "127.0.0.1";
 
     try {
-      const { success } = await ratelimit.limit(ip);
-      if (!success) {
-        return NextResponse.json(
-          { error: "Daily AI generation limit reached (5/day). Please try again tomorrow." },
-          { status: 429 }
-        );
+      const limiter = getRatelimit();
+      if (limiter) {
+        const { success } = await limiter.limit(ip);
+        if (!success) {
+          return NextResponse.json(
+            { error: "Daily AI generation limit reached (5/day). Please try again tomorrow." },
+            { status: 429 }
+          );
+        }
       }
     } catch (error) {
       console.warn("Rate limit check failed, bypassing...", error);
