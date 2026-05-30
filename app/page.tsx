@@ -12,7 +12,7 @@ export default function LandingPage() {
     // Force dark mode context for the entire landing page
     <div className="relative flex flex-col min-h-screen bg-black text-white dark selection:bg-brand/30 selection:text-brand-foreground">
       <Navbar />
-      <main className="flex-1 overflow-hidden">
+      <main className="flex-1">
         <HeroSection />
         <FeaturesSection />
         <TemplatesShowcase />

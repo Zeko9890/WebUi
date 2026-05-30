@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Zap, Palette, Layers, Code2, Smartphone, ArrowRight } from "lucide-react";
+import { Zap, Palette, Code2, Smartphone, ArrowRight } from "lucide-react";
 
 const quickLinks = [
   {

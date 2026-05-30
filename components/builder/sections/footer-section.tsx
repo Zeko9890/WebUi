@@ -1,6 +1,6 @@
 "use client";
 
-import type { BuilderConfig } from "@/types/builder";
+import type { BuilderConfig, SectionId } from "@/types/builder";
 import { InlineText } from "@/components/generator/inline-edit";
 
 interface FooterSectionProps {
@@ -17,7 +17,7 @@ export function FooterSection({ config, onUpdate }: FooterSectionProps) {
     }
   };
 
-  const hasSection = (id: string) => config.sectionOrder.includes(id as any);
+  const hasSection = (id: string) => config.sectionOrder.includes(id as SectionId);
 
   return (
     <footer className="px-6 lg:px-10 pt-20 pb-12 border-t border-[var(--canvas-card-border)] bg-[var(--canvas-bg)] text-[var(--canvas-fg)] relative z-10">

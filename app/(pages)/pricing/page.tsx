@@ -65,7 +65,7 @@ export default function PricingPage() {
             Simple, transparent <span className="gradient-brand-text">pricing</span>
           </h1>
           <p className="text-xl text-muted-foreground">
-            Choose the perfect plan for your needs. Always know what you'll pay.
+            Choose the perfect plan for your needs. Always know what you&apos;ll pay.
           </p>
         </motion.div>
       </div>

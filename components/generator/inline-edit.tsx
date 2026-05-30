@@ -37,14 +37,13 @@ export const InlineText = React.memo(function InlineText({
   // Track last known value to avoid needless updates
   const lastValue = useRef(value);
   // Keep initial HTML reference static so React doesn't reconcile children on every render
-  const htmlRef = useRef({ __html: value });
+  const [initialHtml] = useState({ __html: value });
 
   // Sync external value into the contenteditable ONLY when not focused
   useEffect(() => {
     if (ref.current && !focused && value !== lastValue.current) {
       ref.current.textContent = value;
       lastValue.current = value;
-      htmlRef.current = { __html: value };
     }
   }, [value, focused]);
 
@@ -109,7 +108,7 @@ export const InlineText = React.memo(function InlineText({
           "focus:bg-blue-500/5 focus:shadow-[0_0_0_4px_rgba(59,130,246,0.12)]",
           isEmpty && "text-muted-foreground/50 italic"
         ),
-        dangerouslySetInnerHTML: htmlRef.current,
+        dangerouslySetInnerHTML: initialHtml,
       })}
     </span>
   );

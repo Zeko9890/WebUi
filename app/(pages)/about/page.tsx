@@ -1,5 +1,6 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element */
 import { motion } from "framer-motion";
 
 export default function AboutPage() {
@@ -48,7 +49,7 @@ export default function AboutPage() {
               For too long, the gap between design tools and code repositories has caused friction, lost time, and compromised quality. ZekoUI was founded to eliminate this gap entirely.
             </p>
             <p>
-              By leveraging generative AI, we're giving developers the power to move at the speed of thought. You shouldn't have to manually translate a mockup into React components—our platform does the heavy lifting, outputting clean, standard, and beautiful code instantly.
+              By leveraging generative AI, we&apos;re giving developers the power to move at the speed of thought. You shouldn&apos;t have to manually translate a mockup into React components—our platform does the heavy lifting, outputting clean, standard, and beautiful code instantly.
             </p>
           </div>
         </div>
@@ -59,14 +60,14 @@ export default function AboutPage() {
           </div>
           <div className="md:col-span-8">
             <p className="mb-6">
-              We are a group of engineers, designers, and dreamers who have built products at some of the world's largest tech companies. We experienced the pain of hand-coding UI boilerplate firsthand, and we decided to fix it for everyone.
+              We are a group of engineers, designers, and dreamers who have built products at some of the world&apos;s largest tech companies. We experienced the pain of hand-coding UI boilerplate firsthand, and we decided to fix it for everyone.
             </p>
           </div>
         </div>
 
         <div className="aspect-[21/9] bg-zinc-900 rounded-3xl overflow-hidden relative">
            <img
-             src="/workspace-ZekoUI.png"
+             src="/workspace-zekoui.png"
              alt="Modern software engineer workspace with ZekoUI logo on laptop"
              className="absolute inset-0 w-full h-full object-cover"
            />

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
-import Image from "next/image";
+import { ArrowRight, Calendar, Clock } from "lucide-react";
 
 const articles = [
   {
@@ -89,7 +89,7 @@ export default function BlogPage() {
 
         {/* Grid of Articles */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {rest.map((article, i) => (
+          {rest.map((article) => (
             <div key={article.title} className="group cursor-pointer flex flex-col">
               <div className="aspect-[16/9] rounded-2xl bg-zinc-900 border border-zinc-800/50 mb-5 relative overflow-hidden">
                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />

@@ -43,7 +43,7 @@ export default function CareersPage() {
             Join us in building the <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">future</span>.
           </h1>
           <p className="text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            We're a small, fast-moving team looking for exceptional people to help us democratize software creation.
+            We&apos;re a small, fast-moving team looking for exceptional people to help us democratize software creation.
           </p>
         </motion.div>
       </div>

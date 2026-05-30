@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Copy } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 export default function ApiReferencePage() {
   const handleCopy = (text: string) => {
@@ -51,7 +50,7 @@ export default function ApiReferencePage() {
                   <div className="grid grid-cols-3 p-4 border-t border-zinc-800 text-sm text-zinc-400">
                     <div className="font-mono text-white">theme <span className="opacity-50 text-xs">(optional)</span></div>
                     <div>string</div>
-                    <div>The visual preset to apply (e.g., "startup", "luxury").</div>
+                    <div>The visual preset to apply (e.g., &quot;startup&quot;, &quot;luxury&quot;).</div>
                   </div>
                 </div>
               </section>
@@ -101,15 +100,15 @@ export default function ApiReferencePage() {
               <div className="p-4 overflow-x-auto text-sm font-mono text-zinc-300 leading-relaxed">
                 <span className="text-brand">curl</span> -X POST https://api.zeko.ui/v1/generate \
                 <br />
-                &nbsp;&nbsp;-H <span className="text-emerald-400">"Authorization: Bearer YOUR_API_KEY"</span> \
+                &nbsp;&nbsp;-H <span className="text-emerald-400">&quot;Authorization: Bearer YOUR_API_KEY&quot;</span> \
                 <br />
-                &nbsp;&nbsp;-H <span className="text-emerald-400">"Content-Type: application/json"</span> \
+                &nbsp;&nbsp;-H <span className="text-emerald-400">&quot;Content-Type: application/json&quot;</span> \
                 <br />
                 &nbsp;&nbsp;-d <span className="text-purple-400">{"'{"}</span>
                 <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">"prompt"</span>: <span className="text-emerald-400">"A modern SaaS landing page for a developer tool"</span>,
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">&quot;prompt&quot;</span>: <span className="text-emerald-400">&quot;A modern SaaS landing page for a developer tool&quot;</span>,
                 <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">"theme"</span>: <span className="text-emerald-400">"startup"</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">&quot;theme&quot;</span>: <span className="text-emerald-400">&quot;startup&quot;</span>
                 <br />
                 &nbsp;&nbsp;<span className="text-purple-400">{"}'"}</span>
               </div>
@@ -129,15 +128,15 @@ export default function ApiReferencePage() {
               <div className="p-4 overflow-x-auto text-sm font-mono text-zinc-300 leading-relaxed">
                 <span className="text-purple-400">{"{"}</span>
                 <br />
-                &nbsp;&nbsp;<span className="text-blue-400">"id"</span>: <span className="text-emerald-400">"schema_9f8b2a..."</span>,
+                &nbsp;&nbsp;<span className="text-blue-400">&quot;id&quot;</span>: <span className="text-emerald-400">&quot;schema_9f8b2a...&quot;</span>,
                 <br />
-                &nbsp;&nbsp;<span className="text-blue-400">"config"</span>: <span className="text-purple-400">{"{"}</span>
+                &nbsp;&nbsp;<span className="text-blue-400">&quot;config&quot;</span>: <span className="text-purple-400">{"{"}</span>
                 <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">"brandName"</span>: <span className="text-emerald-400">"DevTool"</span>,
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">&quot;brandName&quot;</span>: <span className="text-emerald-400">&quot;DevTool&quot;</span>,
                 <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">"theme"</span>: <span className="text-emerald-400">"startup"</span>,
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">&quot;theme&quot;</span>: <span className="text-emerald-400">&quot;startup&quot;</span>,
                 <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-zinc-500">// ... truncated</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-zinc-500">{"// ... truncated"}</span>
                 <br />
                 &nbsp;&nbsp;<span className="text-purple-400">{"}"}</span>
                 <br />

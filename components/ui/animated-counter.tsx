@@ -24,7 +24,7 @@ export function AnimatedCounter({ value, children }: AnimatedCounterProps) {
     // Regex to match prefix, number (with optional decimals/commas), and suffix
     const match = value.match(/^([^0-9.-]*)([0-9.,]+)([^0-9]*)$/);
     if (!match) {
-      setDisplayValue(value);
+      setTimeout(() => setDisplayValue(value), 0);
       return;
     }
 
@@ -34,7 +34,7 @@ export function AnimatedCounter({ value, children }: AnimatedCounterProps) {
     const suffix = match[3];
 
     if (isNaN(num)) {
-      setDisplayValue(value);
+      setTimeout(() => setDisplayValue(value), 0);
       return;
     }
 

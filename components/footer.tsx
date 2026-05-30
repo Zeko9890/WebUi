@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Sparkles } from "lucide-react";
+
 import { BrandLogo } from "@/components/brand";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
@@ -29,7 +29,6 @@ const FOOTER_LINKS = {
   Resources: [
     { label: "Documentation", href: "/docs" },
     { label: "API Reference", href: "/api-reference" },
-    { label: "Examples", href: "/examples" },
     { label: "Blog", href: "/blog" },
   ],
   Company: [

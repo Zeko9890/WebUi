@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import type { BuilderConfig } from "@/types/builder";
+import type { BuilderConfig, SectionId } from "@/types/builder";
 import { InlineText } from "@/components/generator/inline-edit";
 import { Menu, X } from "lucide-react";
 
@@ -53,7 +53,7 @@ export function NavbarSection({ config, onUpdate }: NavbarSectionProps) {
     { label: "Testimonials", id: "testimonials" },
     { label: "Pricing", id: "pricing" },
     { label: "FAQ", id: "faq" },
-  ].filter(link => config.sectionOrder.includes(link.id as any));
+  ].filter(link => config.sectionOrder.includes(link.id as SectionId));
 
   return (
     <div className={cn(
