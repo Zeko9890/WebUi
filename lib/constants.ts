@@ -4,10 +4,10 @@ import type {
 } from "@/types";
 
 export const NAV_LINKS: NavLink[] = [
-  { label: "Features", href: "/#features" },
+  { label: "Features", href: "/features" },
   { label: "Generator", href: "/generator" },
-  { label: "Docs", href: "#" },
-  { label: "Pricing", href: "#" },
+  { label: "Docs", href: "/docs" },
+  { label: "Pricing", href: "/pricing" },
 ];
 
 export const FEATURES: Feature[] = [

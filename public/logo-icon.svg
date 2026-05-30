@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="zeko-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <!-- Stylized Z mark inspired by the ZekoUI logo -->
+  <path d="M16 12 L48 12 C50 12 51 13.5 50 15 L30 38 L48 38 C50 38 51 40 50 42 L48 44 C47.5 45 46.5 45.5 45.5 45.5 L14 45.5 C12 45.5 11 44 12 42 L33 18 L16 18 C14 18 13 16 14 14 L15 13 C15.3 12.4 15.6 12 16 12 Z" fill="url(#zeko-grad)"/>
+  <!-- Decorative swirl accent -->
+  <path d="M38 8 C44 8 50 12 50 12 L48 12 C48 12 43 9.5 38 10 C33 10.5 30 14 30 14 L28.5 13 C28.5 13 32 8 38 8 Z" fill="url(#zeko-grad)" opacity="0.7"/>
+  <path d="M26 52 C20 52 14 48 14 48 L16 47.5 C16 47.5 21 50.5 26 50 C31 49.5 34 46 34 46 L35.5 47 C35.5 47 32 52 26 52 Z" fill="url(#zeko-grad)" opacity="0.7"/>
+</svg>

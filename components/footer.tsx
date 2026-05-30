@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
+import { BrandLogo } from "@/components/brand";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 function GithubIcon({ className }: { className?: string }) {
@@ -20,22 +21,22 @@ function XIcon({ className }: { className?: string }) {
 
 const FOOTER_LINKS = {
   Product: [
-    { label: "Features", href: "/#features" },
+    { label: "Features", href: "/features" },
     { label: "Generator", href: "/generator" },
-    { label: "Changelog", href: "#" },
-    { label: "Roadmap", href: "#" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Examples", href: "/examples" },
   ],
   Resources: [
-    { label: "Documentation", href: "#" },
-    { label: "API Reference", href: "#" },
-    { label: "Examples", href: "#" },
-    { label: "Blog", href: "#" },
+    { label: "Documentation", href: "/docs" },
+    { label: "API Reference", href: "/api-reference" },
+    { label: "Examples", href: "/examples" },
+    { label: "Blog", href: "/blog" },
   ],
   Company: [
-    { label: "About", href: "#" },
-    { label: "Careers", href: "#" },
-    { label: "Privacy", href: "#" },
-    { label: "Terms", href: "#" },
+    { label: "About", href: "/about" },
+    { label: "Careers", href: "/careers" },
+    { label: "Privacy", href: "/privacy" },
+    { label: "Terms", href: "/terms" },
   ],
 };
 
@@ -49,11 +50,8 @@ export function Footer() {
 
           {/* Brand col */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-2.5 mb-3 group">
-              <span className="flex items-center justify-center size-7 rounded-lg gradient-brand group-hover:opacity-90 group-hover:scale-105 transition-all duration-200">
-                <Sparkles className="size-3.5 text-white" />
-              </span>
-              <span className="font-bold text-sm gradient-brand-text">ZekoUi</span>
+            <Link href="/" className="inline-block mb-4 hover:opacity-90 transition-opacity">
+              <BrandLogo size={28} />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-[200px] mb-5">
               Generate production-ready UI components instantly with AI.
@@ -117,7 +115,7 @@ export function Footer() {
 
         <div className="mt-12 pt-6 border-t border-border/60 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-muted-foreground">
-            © {year} ZekoUi. All rights reserved.
+            © {year} ZekoUI. All rights reserved.
           </p>
           <p className="text-xs text-muted-foreground">
             Built with Next.js &amp; shadcn/ui

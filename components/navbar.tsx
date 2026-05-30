@@ -6,6 +6,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { BrandLogo } from "@/components/brand";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
@@ -55,19 +56,12 @@ export function Navbar() {
           <Link
             id="nav-logo"
             href="/"
-            className="flex items-center gap-2.5 font-semibold text-[14px] tracking-tight shrink-0 group"
+            className="flex items-center gap-1.5 shrink-0 group hover:opacity-90 transition-opacity"
           >
-            <span className="flex items-center justify-center size-7 rounded-lg gradient-brand shadow-sm group-hover:opacity-90 group-hover:scale-105 transition-all duration-200">
-              <Sparkles className="size-3.5 text-white" />
+            <BrandLogo size={24} />
+            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-brand/10 text-brand border border-brand/20 dark:bg-brand/20 dark:text-brand-foreground/90 scale-90">
+              BETA
             </span>
-            <div className="flex items-center gap-1.5">
-              <span className="hidden sm:inline font-bold gradient-brand-text">
-                ZekoUi
-              </span>
-              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-brand/10 text-brand border border-brand/20 dark:bg-brand/20 dark:text-brand-foreground/90 scale-90">
-                BETA
-              </span>
-            </div>
           </Link>
 
           {/* Desktop nav */}
