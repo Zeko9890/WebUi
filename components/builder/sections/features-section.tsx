@@ -21,17 +21,31 @@ const item: Variants = {
 interface FeaturesSectionProps {
   config: BuilderConfig;
   onUpdateFeature: (index: number, field: keyof FeatureItem, value: string) => void;
+  viewport?: "desktop" | "tablet" | "mobile";
 }
 
-export function FeaturesSection({ config, onUpdateFeature }: FeaturesSectionProps) {
+export function FeaturesSection({ config, onUpdateFeature, viewport = "desktop" }: FeaturesSectionProps) {
+  const isMobile = viewport === "mobile";
+  const isTablet = viewport === "tablet";
+  const isDesktop = viewport === "desktop";
+
   const { featureLayout, cardStyle } = config;
 
   const isList = featureLayout === "list";
   const isAlt = featureLayout === "alternating";
-  const cols = featureLayout === "3-col" ? "md:grid-cols-3" : featureLayout === "2-col" ? "md:grid-cols-2" : "grid-cols-1";
+  
+  let cols = "grid-cols-1";
+  if (isDesktop) {
+    cols = featureLayout === "3-col" ? "grid-cols-3" : featureLayout === "2-col" ? "grid-cols-2" : "grid-cols-1";
+  } else if (isTablet) {
+    cols = featureLayout === "3-col" || featureLayout === "2-col" ? "grid-cols-2" : "grid-cols-1";
+  }
 
   return (
-    <section className="px-6 lg:px-10 py-[var(--canvas-spacing)] relative z-10 border-t border-[var(--canvas-card-border)] bg-[var(--canvas-bg)]">
+    <section className={cn(
+      "py-[var(--canvas-spacing)] relative z-10 border-t border-[var(--canvas-card-border)] bg-[var(--canvas-bg)]",
+      isDesktop ? "px-10" : "px-6"
+    )}>
       
       {/* Section Header */}
       <div className="text-center mb-20">
@@ -71,8 +85,8 @@ export function FeaturesSection({ config, onUpdateFeature }: FeaturesSectionProp
                 cardStyle === "glass" ? "backdrop-blur-2xl bg-white/5 dark:bg-black/20 border border-white/10 hover:border-white/20 shadow-xl" : "",
                 "rounded-[var(--canvas-radius)]",
                 (!isList && !isAlt) ? "flex-col text-left" : "",
-                isList ? "flex-col md:flex-row items-start gap-8" : "",
-                isAlt ? (isEven ? "flex-col md:flex-row items-center gap-8 md:gap-16 text-left" : "flex-col md:flex-row-reverse items-center gap-8 md:gap-16 text-left") : ""
+                isList ? (!isMobile ? "flex-row items-start gap-8" : "flex-col items-start gap-8") : "",
+                isAlt ? (isEven ? (!isMobile ? "flex-row items-center gap-16 text-left" : "flex-col items-center gap-8 text-left") : (!isMobile ? "flex-row-reverse items-center gap-16 text-left" : "flex-col items-center gap-8 text-left")) : ""
               )}
             >
               {/* Premium Hover Glow Effect for Cards */}
@@ -89,7 +103,7 @@ export function FeaturesSection({ config, onUpdateFeature }: FeaturesSectionProp
                   "flex items-center justify-center shrink-0 relative z-10",
                   "rounded-[calc(var(--canvas-radius)*0.75)] text-2xl shadow-sm border border-black/5 dark:border-white/10",
                   (isList || isAlt) ? "mb-0" : "mb-8",
-                  isAlt ? "w-full md:w-80 h-64 md:h-80 text-7xl bg-[var(--canvas-card-bg)] shadow-2xl" : "size-14"
+                  isAlt ? (!isMobile ? "w-80 h-80 text-7xl bg-[var(--canvas-card-bg)] shadow-2xl" : "w-full h-64 text-7xl bg-[var(--canvas-card-bg)] shadow-2xl") : "size-14"
                 )}
                 style={{ 
                   backgroundColor: !isAlt ? "color-mix(in srgb, var(--canvas-primary) 12%, transparent)" : undefined,

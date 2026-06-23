@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
-import { ArrowRight, Calendar, Clock } from "lucide-react";
 
 const articles = [
   {

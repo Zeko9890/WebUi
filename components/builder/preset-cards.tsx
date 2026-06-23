@@ -20,7 +20,7 @@ const PRESET_DISPLAY = [
 
 export function PresetCards({ activeTheme, onSelect }: PresetCardsProps) {
   return (
-    <div className="grid grid-cols-2 gap-2">
+    <div className="grid grid-cols-3 gap-2">
       {PRESET_DISPLAY.map((p) => (
         <motion.button
           key={p.value}
@@ -28,30 +28,26 @@ export function PresetCards({ activeTheme, onSelect }: PresetCardsProps) {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           className={cn(
-            "flex flex-col items-start gap-2 p-3 rounded-xl border text-left transition-colors overflow-hidden relative group",
+            "flex flex-col items-center justify-center gap-1.5 p-2 rounded-xl border text-center transition-all duration-300 overflow-hidden relative group",
             activeTheme === p.value
               ? "border-brand ring-1 ring-brand shadow-sm bg-brand/5"
-              : "border-border/50 hover:border-border hover:bg-accent/30"
+              : "border-border/30 hover:border-border/60 hover:bg-accent/30"
           )}
         >
           {/* Mini preview thumbnail */}
           <div className={cn(
-            "w-full h-10 rounded-md border flex items-center px-2 gap-1.5 overflow-hidden transition-transform",
+            "w-full h-6 rounded-md border flex items-center justify-center overflow-hidden",
             p.bg, p.border
           )}>
-            <div className="size-2 rounded-full shrink-0" style={{ backgroundColor: p.color }} />
-            <div className="h-1.5 w-full rounded-sm bg-current opacity-20" />
+            <div className="size-2 rounded-full shadow-sm" style={{ backgroundColor: p.color }} />
           </div>
           
-          <div className="flex flex-col">
-            <span className={cn(
-              "text-xs font-bold capitalize",
-              activeTheme === p.value ? "text-brand" : "text-foreground"
-            )}>
-              {p.label}
-            </span>
-            <span className="text-[10px] text-muted-foreground leading-tight">{p.desc}</span>
-          </div>
+          <span className={cn(
+            "text-[10px] font-bold capitalize",
+            activeTheme === p.value ? "text-brand" : "text-foreground/80 group-hover:text-foreground"
+          )}>
+            {p.label}
+          </span>
         </motion.button>
       ))}
       <div className="col-span-2 mt-1">

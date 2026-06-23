@@ -8,10 +8,15 @@ import { Menu, X } from "lucide-react";
 
 interface NavbarSectionProps {
   config: BuilderConfig;
-  onUpdate: (key: keyof BuilderConfig, value: string) => void;
+  onUpdate: <K extends keyof BuilderConfig>(key: K, value: BuilderConfig[K]) => void;
+  viewport?: "desktop" | "tablet" | "mobile";
 }
 
-export function NavbarSection({ config, onUpdate }: NavbarSectionProps) {
+export function NavbarSection({ config, onUpdate, viewport = "desktop" }: NavbarSectionProps) {
+  const isMobile = viewport === "mobile";
+  const isTablet = viewport === "tablet";
+  const isDesktop = viewport === "desktop";
+
   const isStuck = config.navbarStyle === "stuck";
   const isFloating = config.navbarStyle === "floating";
   const isBordered = config.navbarStyle === "bordered";
@@ -62,7 +67,8 @@ export function NavbarSection({ config, onUpdate }: NavbarSectionProps) {
       isFloating ? "py-6 px-4" : ""
     )}>
       <header className={cn(
-        "flex items-center justify-between px-6 lg:px-10 h-16 transition-all duration-500 group",
+        "flex items-center justify-between h-16 transition-all duration-500 group",
+        isDesktop ? "px-10" : "px-6",
         isFloating ? "mx-auto max-w-5xl rounded-[var(--canvas-radius)] border border-[var(--canvas-card-border)] bg-[var(--canvas-card-bg)]/80 backdrop-blur-xl shadow-lg hover:shadow-xl hover:border-border/50" : "",
         isBordered ? "border-b border-[var(--canvas-card-border)] bg-[var(--canvas-bg)]/80 backdrop-blur-md" : "",
         (!isFloating && !isBordered) ? "bg-transparent" : ""
@@ -90,7 +96,7 @@ export function NavbarSection({ config, onUpdate }: NavbarSectionProps) {
         </div>
 
         {/* Desktop Links */}
-        <nav className="hidden md:flex items-center gap-8 text-[13px] font-semibold text-[var(--canvas-fg)]">
+        <nav className={cn("items-center gap-8 text-[13px] font-semibold text-[var(--canvas-fg)]", isMobile ? "hidden" : "flex")}>
           {navLinks.map((link) => (
             <a 
               key={link.id}
@@ -113,7 +119,8 @@ export function NavbarSection({ config, onUpdate }: NavbarSectionProps) {
         <div className="flex items-center gap-4">
           <button
             className={cn(
-              "hidden md:inline-flex items-center justify-center px-4 py-2 text-[13px] text-white transition-all duration-300",
+              "items-center justify-center px-4 py-2 text-[13px] text-white transition-all duration-300",
+              isMobile ? "hidden" : "inline-flex",
               "rounded-[var(--canvas-button-radius)] shadow-md hover:shadow-lg hover:-translate-y-0.5",
               "relative overflow-hidden group/btn"
             )}
@@ -131,7 +138,7 @@ export function NavbarSection({ config, onUpdate }: NavbarSectionProps) {
           </button>
           
           <button 
-            className="md:hidden p-2 text-[var(--canvas-fg)] opacity-70 hover:opacity-100"
+            className={cn("p-2 text-[var(--canvas-fg)] opacity-70 hover:opacity-100", !isMobile && "hidden")}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="size-6" /> : <Menu className="size-6" />}
@@ -140,8 +147,8 @@ export function NavbarSection({ config, onUpdate }: NavbarSectionProps) {
       </header>
 
       {/* Mobile Menu Dropdown */}
-      {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full p-4 z-40">
+      {(mobileMenuOpen && isMobile) && (
+        <div className="absolute top-full left-0 w-full p-4 z-40">
           <div className="bg-[var(--canvas-card-bg)] border border-[var(--canvas-card-border)] rounded-[var(--canvas-radius)] p-4 shadow-xl flex flex-col gap-4 backdrop-blur-xl">
             <nav className="flex flex-col gap-4 text-sm font-semibold text-[var(--canvas-fg)]">
               {navLinks.map((link) => (

@@ -66,7 +66,7 @@ export default function BuilderPage() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="w-full shrink-0 border-b md:border-b-0 md:border-r border-border/30 bg-background flex flex-col md:w-[380px] lg:w-[400px] md:h-full z-10 h-auto md:overflow-hidden"
+          className="w-full shrink-0 border-b md:border-b-0 md:border-r border-border/10 bg-background flex flex-col md:w-[280px] lg:w-[300px] md:h-full z-10 h-auto md:overflow-hidden shadow-[2px_0_10px_rgba(0,0,0,0.02)]"
         >
           <Sidebar
             config={config}

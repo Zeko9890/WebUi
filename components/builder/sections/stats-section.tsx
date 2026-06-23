@@ -21,10 +21,15 @@ const item: Variants = {
 
 interface StatsSectionProps {
   config: BuilderConfig;
-  onUpdateStat: (index: number, field: keyof StatItem, value: string) => void;
+  onUpdateStat: (index: number, field: keyof BuilderConfig["stats"][0], value: string) => void;
+  viewport?: "desktop" | "tablet" | "mobile";
 }
 
-export function StatsSection({ config, onUpdateStat }: StatsSectionProps) {
+export function StatsSection({ config, onUpdateStat, viewport = "desktop" }: StatsSectionProps) {
+  const isMobile = viewport === "mobile";
+  const isTablet = viewport === "tablet";
+  const isDesktop = viewport === "desktop";
+
   // Theme styling overrides
   const isDark = config.darkMode;
   const textColor = isDark ? "text-white" : "text-slate-900";
@@ -33,19 +38,20 @@ export function StatsSection({ config, onUpdateStat }: StatsSectionProps) {
   return (
     <section 
       className={cn(
-        "w-full py-16 md:py-24 relative overflow-hidden transition-colors duration-500",
-        config.sectionSpacing === 'tight' ? 'py-12 md:py-16' : 
-        config.sectionSpacing === 'relaxed' ? 'py-24 md:py-32' : 
-        config.sectionSpacing === 'loose' ? 'py-32 md:py-48' : ''
+        "w-full relative overflow-hidden transition-colors duration-500",
+        !isMobile ? "py-24" : "py-16",
+        config.sectionSpacing === 'tight' ? (!isMobile ? 'py-16' : 'py-12') : 
+        config.sectionSpacing === 'relaxed' ? (!isMobile ? 'py-32' : 'py-24') : 
+        config.sectionSpacing === 'loose' ? (!isMobile ? 'py-48' : 'py-32') : ''
       )}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className={cn("max-w-7xl mx-auto", isDesktop ? "px-8" : "px-6")}>
         <motion.div 
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 divide-y md:divide-y-0 md:divide-x divide-border/20"
+          className={cn("grid divide-border/20", isMobile ? "grid-cols-1 gap-8 divide-y" : "grid-cols-3 gap-12 divide-x")}
         >
           {config.stats.map((stat, i) => (
             <motion.div
@@ -53,15 +59,15 @@ export function StatsSection({ config, onUpdateStat }: StatsSectionProps) {
               variants={item}
               className={cn(
                 "flex flex-col items-center text-center",
-                i !== 0 ? "pt-8 md:pt-0" : ""
+                i !== 0 ? (isMobile ? "pt-8" : "pt-0") : ""
               )}
             >
               <h3 
                 className={cn(
                   "font-black tracking-tight mb-2",
-                  config.typographyScale === 'large' ? 'text-5xl md:text-7xl' :
-                  config.typographyScale === 'compact' ? 'text-4xl md:text-5xl' :
-                  'text-5xl md:text-6xl',
+                  config.typographyScale === 'large' ? (!isMobile ? 'text-7xl' : 'text-5xl') :
+                  config.typographyScale === 'compact' ? (!isMobile ? 'text-5xl' : 'text-4xl') :
+                  (!isMobile ? 'text-6xl' : 'text-5xl'),
                   textColor
                 )}
               >

@@ -22,9 +22,14 @@ const item: Variants = {
 interface TestimonialsSectionProps {
   config: BuilderConfig;
   onUpdateTestimonial: (index: number, field: keyof TestimonialItem, value: string) => void;
+  viewport?: "desktop" | "tablet" | "mobile";
 }
 
-export function TestimonialsSection({ config, onUpdateTestimonial }: TestimonialsSectionProps) {
+export function TestimonialsSection({ config, onUpdateTestimonial, viewport = "desktop" }: TestimonialsSectionProps) {
+  const isMobile = viewport === "mobile";
+  const isTablet = viewport === "tablet";
+  const isDesktop = viewport === "desktop";
+
   const isDark = config.darkMode;
   const textColor = isDark ? "text-white" : "text-slate-900";
   const mutedColor = isDark ? "text-white/60" : "text-slate-500";
@@ -34,19 +39,20 @@ export function TestimonialsSection({ config, onUpdateTestimonial }: Testimonial
   return (
     <section 
       className={cn(
-        "w-full py-16 md:py-24 relative overflow-hidden transition-colors duration-500",
-        config.sectionSpacing === 'tight' ? 'py-12 md:py-16' : 
-        config.sectionSpacing === 'relaxed' ? 'py-24 md:py-32' : 
-        config.sectionSpacing === 'loose' ? 'py-32 md:py-48' : ''
+        "w-full relative overflow-hidden transition-colors duration-500",
+        !isMobile ? "py-24" : "py-16",
+        config.sectionSpacing === 'tight' ? (!isMobile ? 'py-16' : 'py-12') : 
+        config.sectionSpacing === 'relaxed' ? (!isMobile ? 'py-32' : 'py-24') : 
+        config.sectionSpacing === 'loose' ? (!isMobile ? 'py-48' : 'py-32') : ''
       )}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+      <div className={cn("max-w-7xl mx-auto", isDesktop ? "px-8" : "px-6")}>
+        <div className={cn("text-center max-w-3xl mx-auto", !isMobile ? "mb-20" : "mb-16")}>
           <h2 className={cn(
             "font-black tracking-tight mb-6",
-            config.typographyScale === 'large' ? 'text-4xl md:text-6xl' :
-            config.typographyScale === 'compact' ? 'text-3xl md:text-4xl' :
-            'text-4xl md:text-5xl',
+            config.typographyScale === 'large' ? (!isMobile ? 'text-6xl' : 'text-4xl') :
+            config.typographyScale === 'compact' ? (!isMobile ? 'text-4xl' : 'text-3xl') :
+            (!isMobile ? 'text-5xl' : 'text-4xl'),
             textColor
           )}>
             Loved by thousands
@@ -58,7 +64,7 @@ export function TestimonialsSection({ config, onUpdateTestimonial }: Testimonial
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className={cn("grid gap-6", isMobile ? "grid-cols-1" : "grid-cols-3")}
         >
           {config.testimonials.map((testimonial, i) => (
             <motion.div

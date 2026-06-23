@@ -8,19 +8,24 @@ import { EditableImage } from "@/components/generator/editable-image";
 
 interface HeroSectionProps {
   config: BuilderConfig;
-  onUpdate: (key: keyof BuilderConfig, value: string) => void;
+  onUpdate: <K extends keyof BuilderConfig>(key: K, value: BuilderConfig[K]) => void;
+  viewport?: "desktop" | "tablet" | "mobile";
 }
 
-export function HeroSection({ config, onUpdate }: HeroSectionProps) {
+export function HeroSection({ config, onUpdate, viewport = "desktop" }: HeroSectionProps) {
+  const isMobile = viewport === "mobile";
+  const isTablet = viewport === "tablet";
+  const isDesktop = viewport === "desktop";
+
   const isSplit = config.heroStyle === "split";
   const isMinimal = config.heroStyle === "minimal";
   const isBold = config.heroStyle === "bold";
 
   return (
     <section className={cn(
-      "relative z-10 flex flex-col justify-center overflow-hidden",
-      isSplit ? "lg:flex-row items-center text-left" : "items-center text-center",
-      "px-6 lg:px-10",
+      "relative z-10 flex justify-center overflow-hidden",
+      isSplit ? (isDesktop ? "flex-row items-center text-left" : "flex-col items-center text-left") : "flex-col items-center text-center",
+      isDesktop ? "px-10" : "px-6",
       "py-[calc(var(--canvas-py)*1.2)] min-h-[70vh]"
     )}>
       
@@ -46,7 +51,7 @@ export function HeroSection({ config, onUpdate }: HeroSectionProps) {
 
       <div className={cn(
         "flex flex-col relative z-10 w-full",
-        isSplit ? "lg:w-[55%] pr-0 lg:pr-16" : "max-w-4xl items-center"
+        isSplit ? (isDesktop ? "w-[55%] pr-16" : "w-full pr-0") : "max-w-4xl items-center"
       )}>
         {/* Badge */}
         {!isMinimal && (
@@ -118,7 +123,8 @@ export function HeroSection({ config, onUpdate }: HeroSectionProps) {
 
         {/* Buttons */}
         <div className={cn(
-          "flex flex-col sm:flex-row gap-4 w-full sm:w-auto",
+          "flex gap-4 w-full",
+          isMobile ? "flex-col" : "flex-row w-auto",
           !isSplit && "justify-center"
         )}>
           <button
@@ -166,12 +172,18 @@ export function HeroSection({ config, onUpdate }: HeroSectionProps) {
 
       {/* Split image placeholder */}
       {isSplit && (
-        <div className="w-full lg:w-[45%] mt-16 lg:mt-0 relative group">
+        <div className={cn(
+          "relative group",
+          isDesktop ? "w-[45%] mt-0" : "w-full mt-16"
+        )}>
           <div className="absolute -inset-1 bg-gradient-to-r from-[var(--canvas-primary)] to-purple-500 rounded-[calc(var(--canvas-radius)+4px)] blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
           <EditableImage
             value={config.heroImage}
             onChange={(v) => onUpdate("heroImage", v)}
-            className="w-full aspect-square lg:aspect-[4/3] shadow-2xl relative z-10"
+            className={cn(
+              "w-full shadow-2xl relative z-10",
+              isDesktop ? "aspect-[4/3]" : "aspect-square"
+            )}
           />
         </div>
       )}

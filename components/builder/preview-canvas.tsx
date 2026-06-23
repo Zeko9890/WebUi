@@ -39,15 +39,18 @@ export function PreviewCanvas({
 
   const getViewportWidth = () => {
     switch (viewport) {
-      case "mobile": return "max-w-[375px]";
-      case "tablet": return "max-w-[768px]";
+      case "mobile": return 375;
+      case "tablet": return 768;
       case "desktop":
-      default: return "max-w-[1280px]";
+      default: return 1280;
     }
   };
 
   return (
-    <div className="h-full w-full bg-[repeating-linear-gradient(45deg,transparent,transparent_12px,hsl(var(--muted)/0.2)_12px,hsl(var(--muted)/0.2)_13px)] flex flex-col items-center p-4 md:p-8 overflow-y-auto">
+    <div className="h-full w-full flex flex-col items-center p-4 md:p-8 lg:p-12 overflow-y-auto relative z-0 dot-grid">
+      
+      {/* Subtle backdrop glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full gradient-radial-glow -z-10 opacity-50 pointer-events-none" />
       
       {/* Viewport Toolbar */}
       <div className="flex items-center gap-1 p-1 bg-background border border-border/50 rounded-lg shadow-sm mb-6 shrink-0 z-10">
@@ -77,11 +80,15 @@ export function PreviewCanvas({
       {/* Constraint container that looks like a browser window */}
       <div 
         className={cn(
-          "w-full bg-[var(--canvas-bg)] rounded-xl border border-border/40 shadow-2xl flex flex-col overflow-hidden relative shrink-0",
-          getViewportWidth(),
+          "w-full bg-[var(--canvas-bg)] rounded-xl border border-border/40 shadow-2xl flex flex-col overflow-hidden relative shrink-0 my-auto",
           "transition-all duration-500 ease-in-out origin-top",
-          "ring-1 ring-border/20 ring-offset-2 ring-offset-background"
+          "ring-1 ring-border/20 ring-offset-2 ring-offset-background/50",
+          "@container"
         )}
+        style={{
+          maxWidth: getViewportWidth(),
+          "--canvas-primary": config.primaryColor,
+        } as React.CSSProperties}
         data-theme={config.theme}
         data-mode={config.darkMode ? "dark" : "light"}
         data-font={config.font}
@@ -89,9 +96,6 @@ export function PreviewCanvas({
         data-shadow={config.shadow}
         data-spacing={config.sectionSpacing}
         data-scale={config.typographyScale}
-        style={{
-          "--canvas-primary": config.primaryColor,
-        } as React.CSSProperties}
       >
         
         {/* Browser Chrome Mockup */}
@@ -118,15 +122,15 @@ export function PreviewCanvas({
             {config.sectionOrder.map((id) => {
               const content = (() => {
                 switch (id) {
-                  case "navbar": return <NavbarSection config={config} onUpdate={onUpdateConfig} />;
-                  case "hero": return <HeroSection config={config} onUpdate={onUpdateConfig} />;
-                  case "features": return <FeaturesSection config={config} onUpdateFeature={onUpdateFeature} />;
-                  case "stats": return <StatsSection config={config} onUpdateStat={onUpdateStat} />;
-                  case "testimonials": return <TestimonialsSection config={config} onUpdateTestimonial={onUpdateTestimonial} />;
-                  case "pricing": return <PricingSection config={config} onUpdatePricing={onUpdatePricing} />;
-                  case "faq": return <FaqSection config={config} onUpdateFaq={onUpdateFaq} />;
-                  case "cta": return <CtaSection config={config} onUpdate={onUpdateConfig} />;
-                  case "footer": return <FooterSection config={config} onUpdate={onUpdateConfig} />;
+                  case "navbar": return <NavbarSection config={config} onUpdate={onUpdateConfig} viewport={viewport} />;
+                  case "hero": return <HeroSection config={config} onUpdate={onUpdateConfig} viewport={viewport} />;
+                  case "features": return <FeaturesSection config={config} onUpdateFeature={onUpdateFeature} viewport={viewport} />;
+                  case "stats": return <StatsSection config={config} onUpdateStat={onUpdateStat} viewport={viewport} />;
+                  case "testimonials": return <TestimonialsSection config={config} onUpdateTestimonial={onUpdateTestimonial} viewport={viewport} />;
+                  case "pricing": return <PricingSection config={config} onUpdatePricing={onUpdatePricing} viewport={viewport} />;
+                  case "faq": return <FaqSection config={config} onUpdateFaq={onUpdateFaq} viewport={viewport} />;
+                  case "cta": return <CtaSection config={config} onUpdate={onUpdateConfig} viewport={viewport} />;
+                  case "footer": return <FooterSection config={config} onUpdate={onUpdateConfig} viewport={viewport} />;
                   default: return null;
                 }
               })();

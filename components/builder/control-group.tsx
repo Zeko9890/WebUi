@@ -34,14 +34,14 @@ export function ControlGroup({
           <ChevronRight className="size-4 text-muted-foreground opacity-50" />
         )}
       </button>
-      {expanded && <div className="px-4 pb-5 pt-1 space-y-5 animate-in slide-in-from-top-1 fade-in duration-200">{children}</div>}
+      {expanded && <div className="px-4 pb-4 pt-0.5 space-y-4 animate-in slide-in-from-top-1 fade-in duration-200">{children}</div>}
     </div>
   );
 }
 
 export function ControlLabel({ children, description }: { children: React.ReactNode; description?: string }) {
   return (
-    <div className="mb-2.5">
+    <div className="mb-1.5">
       <label className="text-[11px] font-bold text-foreground/80 uppercase tracking-wide">
         {children}
       </label>

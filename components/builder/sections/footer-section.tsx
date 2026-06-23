@@ -1,14 +1,20 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import type { BuilderConfig, SectionId } from "@/types/builder";
 import { InlineText } from "@/components/generator/inline-edit";
 
 interface FooterSectionProps {
   config: BuilderConfig;
-  onUpdate: (key: keyof BuilderConfig, value: string) => void;
+  onUpdate: <K extends keyof BuilderConfig>(key: K, value: BuilderConfig[K]) => void;
+  viewport?: "desktop" | "tablet" | "mobile";
 }
 
-export function FooterSection({ config, onUpdate }: FooterSectionProps) {
+export function FooterSection({ config, onUpdate, viewport = "desktop" }: FooterSectionProps) {
+  const isMobile = viewport === "mobile";
+  const isTablet = viewport === "tablet";
+  const isDesktop = viewport === "desktop";
+
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const el = document.getElementById(id);
@@ -20,10 +26,10 @@ export function FooterSection({ config, onUpdate }: FooterSectionProps) {
   const hasSection = (id: string) => config.sectionOrder.includes(id as SectionId);
 
   return (
-    <footer className="px-6 lg:px-10 pt-20 pb-12 border-t border-[var(--canvas-card-border)] bg-[var(--canvas-bg)] text-[var(--canvas-fg)] relative z-10">
+    <footer className={cn("pt-20 pb-12 border-t border-[var(--canvas-card-border)] bg-[var(--canvas-bg)] text-[var(--canvas-fg)] relative z-10", isDesktop ? "px-10" : "px-6")}>
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-16">
-          <div className="col-span-2 md:col-span-2">
+        <div className={cn("grid gap-12 mb-16", isMobile ? "grid-cols-2" : "grid-cols-5")}>
+          <div className="col-span-2">
             <div className="flex items-center gap-2 mb-6">
               <div
                 className="flex items-center justify-center size-7 rounded-[calc(var(--canvas-radius)*0.5)] text-white text-xs shadow-sm relative overflow-hidden"
@@ -92,7 +98,7 @@ export function FooterSection({ config, onUpdate }: FooterSectionProps) {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-[var(--canvas-card-border)] flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className={cn("pt-8 border-t border-[var(--canvas-card-border)] flex items-center justify-between gap-4", isMobile ? "flex-col" : "flex-row")}>
           <div className="text-[13px] font-medium opacity-40">
             © {new Date().getFullYear()} {config.brandName}. All rights reserved.
           </div>

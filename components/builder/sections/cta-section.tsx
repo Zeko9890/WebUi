@@ -7,12 +7,17 @@ import { ArrowRight } from "lucide-react";
 
 interface CtaSectionProps {
   config: BuilderConfig;
-  onUpdate: (key: keyof BuilderConfig, value: string) => void;
+  onUpdate: <K extends keyof BuilderConfig>(key: K, value: BuilderConfig[K]) => void;
+  viewport?: "desktop" | "tablet" | "mobile";
 }
 
-export function CtaSection({ config, onUpdate }: CtaSectionProps) {
+export function CtaSection({ config, onUpdate, viewport = "desktop" }: CtaSectionProps) {
+  const isMobile = viewport === "mobile";
+  const isTablet = viewport === "tablet";
+  const isDesktop = viewport === "desktop";
+
   return (
-    <section className="px-6 lg:px-10 py-[var(--canvas-py)] relative z-10">
+    <section className={cn("py-[var(--canvas-py)] relative z-10", isDesktop ? "px-10" : "px-6")}>
       <div 
         className="max-w-5xl mx-auto rounded-[var(--canvas-radius)] overflow-hidden relative shadow-2xl border border-white/10"
         style={{ backgroundColor: "var(--canvas-primary)" }}
@@ -23,11 +28,11 @@ export function CtaSection({ config, onUpdate }: CtaSectionProps) {
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-black/30 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/4 mix-blend-overlay" />
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10 mix-blend-overlay" />
         
-        <div className="relative z-10 px-8 py-20 md:py-28 text-center text-white flex flex-col items-center">
-          <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-6 max-w-2xl leading-[1.1] drop-shadow-sm">
+        <div className={cn("relative z-10 px-8 text-center text-white flex flex-col items-center", !isMobile ? "py-28" : "py-20")}>
+          <h2 className={cn("font-black tracking-tighter mb-6 max-w-2xl leading-[1.1] drop-shadow-sm", !isMobile ? "text-5xl" : "text-3xl")}>
              Ready to accelerate your workflow?
           </h2>
-          <p className="text-white/80 text-lg md:text-xl mb-12 max-w-xl font-medium leading-relaxed">
+          <p className={cn("text-white/80 mb-12 max-w-xl font-medium leading-relaxed", !isMobile ? "text-xl" : "text-lg")}>
              Join thousands of other companies who are building the future with our platform today.
           </p>
           
